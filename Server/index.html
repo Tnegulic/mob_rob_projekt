@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+
+<script type="text/javascript" src="http://static.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
+<script type="text/javascript" src="http://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"></script>
+<script src ="./robot.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" 
+		integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+<script>
+
+$(document).ready(function(){
+    $("#changeStateOn").click(function(){
+        $.post("clientSide.php",
+        {
+          message: "200"
+        },
+        function(data,status){
+			if(status == "success"){
+				//location.reload(true).delay(5000);
+				}
+			
+        });
+    });
+    
+    $("#changeStateOff").click(function(){
+        $.post("clientSide.php",
+        {
+          message: "400"
+        },
+        function(data,status){
+            //location.reload();
+        });
+    });
+});
+
+
+</script>
+<script>
+var wsbroker = "test.mosquitto.org";  
+var wsport = 8080 
+
+var client = new Paho.MQTT.Client(wsbroker, wsport,
+    "myclientid_" + parseInt(Math.random() * 100, 10));
+
+client.onConnectionLost = function (responseObject) {
+  console.log("connection lost: " + responseObject.errorMessage);
+ };
+
+client.onMessageArrived = function (message) {
+  console.log(message.destinationName, ' -- ', message.payloadString);
+    location.reload(true);
+};
+
+var options = {
+  timeout: 3,
+  onSuccess: function () {
+    console.log("mqtt connected");
+    client.subscribe("puspus/rpi");
+  },
+  onFailure: function (message) {
+    console.log("Connection failed: " + message.errorMessage);
+  }
+};
+
+client.connect(options);
+
+</script>
+<style>
+#main { 
+    width: 100%;
+    margin: 0 auto;
+}
+#sidebar    {
+    width: 60%;
+    height: 100%;
+    float: left;
+}
+
+#page-wrap  {
+    width: 50%;
+    height: 30%;
+    margin-left: 50%;
+}
+
+button,input{
+	margin : 5px 5px 5px 5px;
+	width : 10%;
+	}
+
+body,div{
+	background-color : #e0e2e5;
+	}
+</style>
+</head>
+
+<body>
+	<div width = "100%" height = "100%">
+			<div id="main">
+				<div id="sidebar" align="center">
+					<img src="http://192.168.43.150:8000/stream.mjpg">
+				</div>
+				<div id="page-wrap" align="center">
+					<h3 style="margin-top:10%;">Robot</h3> <br>
+					<button id="demo" class="btn btn-info" onclick="myFunction(1)">^</button><br>
+					<button class="btn btn-info" onclick="myFunction(3)"><</button>
+					<button class="btn btn-info" onclick="myFunction(2)">v</button>
+					<button class="btn btn-info" onclick="myFunction(4)">></button> <br>
+					<button class= "btn btn-danger" onclick="myFunction(5)" style="width:40%;">STOP</button>
+					
+					<h3 style="margin-top:10%;">Rpi Cam</h3> <br>
+					<input id="changeStateOn" class="btn btn-success" value = "ON" type="submit"/>
+					<input id="changeStateOff" class= "btn btn-danger" value = "OFF" type="submit"/>
+				</div>
+			</div>	
+	</div>
+</body>
+</html>
+
+
