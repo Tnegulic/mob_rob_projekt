@@ -28,3 +28,5 @@ i spojite se na robot.
 5. U web browser upište **localhost/index.html**
 6. Pritiskom na **tipku ON** uključuje se streaming (potrebno je pričekati nekoliko sekundi da se proces pokrene)
 7. Upravljajte robotom putem zadanog sučelja
+
+![Slika sučelja](https://raw.githubusercontent.com/Tnegulic/mob_rob_projekt/master/Sucelje/sucelje.png)
