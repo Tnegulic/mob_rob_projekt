@@ -1,8 +1,9 @@
 # mob_rob_projekt
 projekt iz izbornog kolegija mobilna robotika, turtlebot segway &amp; bike
 
-## upravljane robotom pomoću livestream kamere
+## Upravljane robotom pomoću livestream kamere
 
+Upravljanje robotom odvija se pomoću ROS bridge protokola. ROS bridghe pruža nam JSON API koji omogućuje korištenje funkcionalnosti ROS-a iz drugih programa. U ovome projektu koristiti ćemo rosbridge za otvaranje Websocketa na portu 8080 koji ćemo iskoristiti za komunikaciju koristeći Roslibjs knjižnice. Roslibjs je glavna JavaScript knjižnica za interakciju ROS-a putem Web preglednika, omogućuje funkcionalnosit poput objavljivanja i pretplaćivanja poruka, pokretanja servisa i ostalih nužnih funkcionalnosti
 
 ## Server side
 
@@ -11,6 +12,10 @@ Za udaljeno upravljanje robotom i snimanje kamerom potrebno je ispuniti nekoliko
 1. Instalirani server na vlastitom računalu (Apache,Nginx...)
 2. Instalirani Python i  potrebni paketi (paho-mqtt, urllib2, picamera ....)
 3. Na vlastito računalo instalirani ROS
+4. Instalirani Rosbridge paketi
+```bash
+	sudo apt-get install ros-kinetic-rosbridge-server
+```
 
 ## Postavljanje i korištenje
 
