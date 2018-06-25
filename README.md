@@ -1,7 +1,10 @@
 # mob_rob_projekt
 Projekt iz izbornog kolegija mobilna robotika, turtlebot segway &amp; bike
+
 segway [link](https://github.com/Tnegulic/turtlebot-segway)
+
 bike   [link](https://github.com/davidmak2709/Turtlebot3Bike) 
+
 ## Upravljane robotom pomoću livestream kamere
 
 Upravljanje robotom odvija se pomoću ROS bridge protokola. ROS bridge pruža nam JSON API koji omogućuje korištenje funkcionalnosti ROS-a iz drugih programa. U ovome projektu koristiti ćemo rosbridge za otvaranje Websocketa na portu 8080 koji ćemo iskoristiti za komunikaciju koristeći Roslibjs knjižnice. Roslibjs je glavna JavaScript knjižnica za interakciju ROS-a putem Web preglednika, omogućuje funkcionalnosit poput objavljivanja i pretplaćivanja poruka, pokretanja servisa i ostalih nužnih funkcionalnosti.
