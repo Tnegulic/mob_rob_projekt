@@ -10,6 +10,7 @@ Za udaljeno upravljanje robotom i snimanje kamerom potrebno je ispuniti nekoliko
 
 1. Instalirani server na vlastitom računalu (Apache,Nginx...)
 2. Instalirani Python i  potrebni paketi (paho-mqtt, urllib2, picamera ....)
+3. Na vlastito računalo instalirani ROS
 
 ## Postavljanje i korištenje
 
